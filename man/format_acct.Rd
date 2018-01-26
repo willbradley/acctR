@@ -11,7 +11,11 @@ format_acct(x, digits = 2, shown.in = NULL)
 
 \item{digits}{numeric to denote number of decimal places}
 
-\item{shown.in}{character to express value in thousands, millions or billions}
+\item{shown.in}{character to express value in thousands, millions or billions.
+Accepts \code{c('k', 'm', 'b')}.}
+}
+\value{
+character vector of \code{length(x)} with desired formatting
 }
 \description{
 Formatting will follow excel accounting style
@@ -22,7 +26,8 @@ Formatting will follow excel accounting style
 
 format_acct(100, digits = 0)
 
-mtcars \%>\% mutate(msrp = runif(nrow(.), 20000, 30000), msrp_format = format_acct(msrp))
+library(dplyr)
+mtcars \%>\% mutate(msrp = runif(nrow(.), 20000, 30000), msrp_format = format_acct(msrp, shown.in = 'k'))
 
 }
 
